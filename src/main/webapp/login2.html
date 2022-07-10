@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+用户名:<br>
+<input type="text" id="username" placeholder="用户名">
+<br>
+密码:<br>
+<input type="password" id="password" placeholder="密码">
+<button id="loginbtn"></button>
+<div id="hhahhaha"></div>
+<br>
+
+<script>
+var test ="hello";
+document.getElementById("loginbtn").innerHTML=test;
+var test2="lasdjlasdjilsajdasljdasjd";
+document.getElementById("hhahhaha").innerText=test2;
+$('#loginbtn').on("click",function (){
+    alert("hhh")
+    var username=$('#username').val()
+    var password=$('#password').val()
+    var d={
+        "username":username,
+        "password":password
+    }
+    var url="/demotest_war_exploded/loginServlet2"
+    $.ajax({
+        type:"post",
+        url:url,
+        dataType:"json",
+        data:d,
+        success:function (data){
+            if(data.code=="OK")
+            {
+                alert(data.code);
+                window.location='/demotest_war_exploded/Showmap.html';
+            }
+
+        }
+    })
+})
+</script>
+</body>
+</html>
